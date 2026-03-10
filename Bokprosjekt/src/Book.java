@@ -2,6 +2,11 @@
  * Book class
  * @author David
  * @version 0.0.1 (16 Nov, 2021)
+ *
+ * @version 0.0.2 (10 Mar, 2026) refactoring changes:
+ * - Added data type final to restrict modification to values that are not meant to be changed
+ * -
+ *
  */
 
 public class Book
@@ -10,12 +15,12 @@ public class Book
     /**
      * Fields with parameters in class book
      */
-    private String title;
-    private String author;
-    private String publisher;
-    private int releaseYear;
-    private int pages;
-    private int barcode;
+    private final String title;
+    private final String author;
+    private final String publisher;
+    private final int releaseYear;
+    private final int pages;
+    private final int barcode;
     private boolean lent;
 
     /**
