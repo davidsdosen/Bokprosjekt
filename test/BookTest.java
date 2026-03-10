@@ -10,9 +10,9 @@ class BookTest {
     @Test
             public void createObjectOfClassTest() {
 
-        Book book1 = new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201, false);
-        Book book2 = new Book("Dropper", "Deez", "nuts", 1912397, 6020, 2012, false);
-        Book book3 = new Book("deez", "Jake Paul", "Greves", 12, 33, 201, false);
+        Book book1 = new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201);
+        Book book2 = new Book("Dropper", "Deez", "nuts", 1912397, 6020, 2012);
+        Book book3 = new Book("deez", "Jake Paul", "Greves", 12, 33, 201);
 
         assertEquals(201, book1.getBarcode(), "unexpected behaviour");
         assertEquals("Dropper", book2.getTitle(), "unexpected behaviour");
@@ -25,9 +25,9 @@ class BookTest {
     @Test
     public void testingAccessorMethods(){
 
-        Book book1 = new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201, false);
-        Book book2 = new Book("Dropper", "Deez", "nuts", 1912397, 6020, 2012, false);
-        Book book3 = new Book("deez", "Jake Paul", "Greves", 12, 33, 201, false);
+        Book book1 = new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201);
+        Book book2 = new Book("Dropper", "Deez", "nuts", 1912397, 6020, 2012);
+        Book book3 = new Book("deez", "Jake Paul", "Greves", 12, 33, 201);
 
         assertEquals("Harry Potter",book1.getTitle(),"unexpected behaviour");
         assertEquals("nuts",book2.getPublisher(),"unexpected behaviour");

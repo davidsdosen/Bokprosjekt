@@ -5,7 +5,7 @@
  *
  * @version 0.0.2 (10 Mar, 2026) refactoring changes:
  * - Added data type final to restrict modification to values that are not meant to be changed
- * -
+ * - Fixed lent state and added two methods
  *
  */
 
@@ -31,10 +31,8 @@ public class Book
      * @param releaseYear release year of book
      * @param pages amount of pages in book
      * @param barcode book's barcode
-     * @param lent lending status
-     *
      */
-    public Book(String title, String author, String publisher, int releaseYear, int pages, int barcode, boolean lent)
+    public Book(String title, String author, String publisher, int releaseYear, int pages, int barcode)
     {
         this.title = title;
         this.author = author;
@@ -42,7 +40,7 @@ public class Book
         this.releaseYear = releaseYear;
         this.pages = pages;
         this.barcode = barcode;
-        this.lent = lent;
+        this.lent = false;
     }
 
     public String getTitle(){
@@ -71,6 +69,17 @@ public class Book
 
     public boolean isLent() {
         return lent;
+    }
+
+    public void lend() {
+        if (lent) {
+            throw new IllegalStateException("Book is already lent");
+        }
+        lent = true;
+    }
+
+    public void returnBook() {
+        lent = false;
     }
 
     /**

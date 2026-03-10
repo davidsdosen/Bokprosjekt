@@ -37,10 +37,10 @@ public class Registry {
      * Stage 2 Task 2
      */
     public void addBooks() {
-        this.addBook(new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201, false));
-        this.addBook(new Book("Kokebok", "David", "NTNU Forlag",2016,150,123, false));
-        this.addBook(new Book("Avoid being ganked on midlane", "Raul", "Mancave Publishing",2021,10,124, false));
-        this.addBook(new Book("David's Book of Grudges", "David", "Mancave Publishing",2021,3,125, false));
+        this.addBook(new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201));
+        this.addBook(new Book("Kokebok", "David", "NTNU Forlag",2016,150,123));
+        this.addBook(new Book("Avoid being ganked on midlane", "Raul", "Mancave Publishing",2021,10,124));
+        this.addBook(new Book("David's Book of Grudges", "David", "Mancave Publishing",2021,3,125));
     }
 
     /**

@@ -105,7 +105,7 @@ public class BookLibraryApp {
                         System.out.println("Error: You must enter a positive value");
                         barcode = this.intChoice();
                     }
-                    Book book = new Book(title, author, publisher, releaseYear, pages, barcode, false);
+                    Book book = new Book(title, author, publisher, releaseYear, pages, barcode);
                     this.register.addBook(book);
                     System.out.println("Book added successfully.");
                     break;
