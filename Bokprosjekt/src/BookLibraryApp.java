@@ -116,11 +116,11 @@ public class BookLibraryApp {
                 case FIND_BOOK_BY_TITLE:
                     System.out.println("Enter a title");
                     String titleOfBook = this.stringChoice();
-                    if(this.register.findFirst(titleOfBook) == null){
+                    if(this.register.findFirstByName(titleOfBook).isEmpty()){
                         System.out.println("Error: This book does not exist");
                     }
                     else {
-                        System.out.println(this.register.findFirst(titleOfBook).toString());
+                        System.out.println(this.register.findFirstByName(titleOfBook).toString());
                     }
                     break;
                 case FIND_BOOKS_BY_AUTHOR:
@@ -136,7 +136,7 @@ public class BookLibraryApp {
                 case FIND_BOOK_BY_BARCODE:
                     System.out.println("Enter the barcode");
                     int barcodeInt = this.intChoice();
-                    if(this.register.findByBarcode(barcodeInt) == null){
+                    if(this.register.findByBarcode(barcodeInt).isEmpty()){
                         System.out.println("Error: This book does not exist");
                     }
                     else {

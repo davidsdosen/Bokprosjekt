@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * Registry class
@@ -70,18 +71,18 @@ public class Registry {
      * @return returns the book
      * Stage 3 Task 2
      */
-    public Book findFirst(String searchString){
+    public Optional<Book> findFirstByName(String searchString){
         int index = 0;
         boolean searching = true;
 
         while (searching && index < bookList.size()){
             Book filename = bookList.get(index);
             if (filename.getTitle().contains(searchString)){
-                return filename;
+                return Optional.of(filename);
             }
             index++;
         }
-        return null;
+        return Optional.empty();
     }
 
     /**
@@ -89,17 +90,17 @@ public class Registry {
      * @param searchInt the barcode int variable that comes from user input
      * @return returns book that was found by the specific barcode
      */
-    public Book findByBarcode(int searchInt){
+    public Optional<Book> findByBarcode(int searchInt){
         int index = 0;
         boolean searching = true;
         while (searching && index < bookList.size()){
             Book filename = bookList.get(index);
             if (filename.getBarcode() == searchInt){
-                return filename;
+                return Optional.of(filename);
             }
             index++;
         }
-        return null;
+        return Optional.empty();
     }
 
     /**
