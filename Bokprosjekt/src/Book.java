@@ -4,9 +4,11 @@
  * @version 0.0.1 (16 Nov, 2021)
  *
  * @version 0.0.2 (10 Mar, 2026) refactoring changes:
- * - Added data type final to restrict modification to values that are not meant to be changed
- * - Fixed lent state and added two methods
- *
+ * - Added data type final to restrict modification to values that are not meant to be mutated
+ * - Refactored lending status and added two lending methods that adds encapsulation of state transitions, basically
+ *   prevents unauthorized change by doing setLent(true), instead needs to change through methods that throw errors
+ *   if something is wrong
+ * -
  */
 
 public class Book
