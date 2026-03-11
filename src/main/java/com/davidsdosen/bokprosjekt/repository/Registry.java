@@ -2,16 +2,18 @@ package com.davidsdosen.bokprosjekt.repository;
 import com.davidsdosen.bokprosjekt.model.Book;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
- * com.davidsdosen.bokprosjekt.repository.Registry class
+ * Registry class
  * @author David
  * @version 0.0.1 (16 Nov, 2021)
+ * @version 0.0.2 (11 Mar, 2026) refactoring
  */
 public class Registry {
 
     /**
-     * field bookList that holds an ArrayList that holds the books (com.davidsdosen.bokprosjekt.model.Book objects)
+     * field bookList that holds an ArrayList that holds the books (Book objects)
      */
     ArrayList<Book> bookList;
 
@@ -37,7 +39,6 @@ public class Registry {
 
     /**
      * addBooks method adds sample books to the library
-     * Stage 2 Task 2
      */
     public void addBooks() {
         this.addBook(new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201));
@@ -48,7 +49,6 @@ public class Registry {
 
     /**
      * Method that lists all books
-     * Stage 2 Task 3
      */
     public void listAllBooks() {
         int index = 0;
@@ -82,49 +82,24 @@ public class Registry {
      * @return returns a book found by the specific barcode
      */
     public Optional<Book> findByBarcode(int searchInt){
-        int index = 0;
-        while (index < bookList.size()){
-            Book filename = bookList.get(index);
-            if (filename.getBarcode() == searchInt){
-                return Optional.of(filename);
-            }
-            index++;
-        }
-        return Optional.empty();
+        return bookList.stream().filter(book -> book.getBarcode() == searchInt).findFirst();
     }
 
     /**
      * Method that finds all books by author name
      * @param searchAuthor author's name from user input
-     * @return returns a list with all the books by said author
-     * Stage 3 Task 3
+     * @return returns an ArrayList of books
      */
     public ArrayList<Book> findAllByAuthor(String searchAuthor){
-        int index = 0;
-        ArrayList<Book> tempBookList = new ArrayList<>();
-        while (index < bookList.size()){
-            Book filename = bookList.get(index);
-            if (filename.getAuthor().contains(searchAuthor)){
-                tempBookList.add(filename);
-            }
-            index++;
-        }
-        return tempBookList;
+        return bookList.stream().filter(book -> book.getAuthor().contains(searchAuthor)).collect(Collectors.toCollection(ArrayList::new));
     }
 
     /**
      * Method that deletes a book by barcode
      * @param barcodeInt barcode entered by user input
-     * @return deletes a book that matches the barcode input
+     * @return returns true if a book was deleted, false if a book was not found
      */
     public boolean deleteByBarcode(int barcodeInt){
-        for (Book book: bookList) {
-            if(book.getBarcode() == barcodeInt){
-                bookList.remove(book);
-                return true;
-            }
-        }
-        return false;
+        return bookList.removeIf(book -> book.getBarcode() == barcodeInt);
     }
-
 }
