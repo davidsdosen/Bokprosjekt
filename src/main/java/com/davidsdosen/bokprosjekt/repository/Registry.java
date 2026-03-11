@@ -75,9 +75,7 @@ public class Registry {
      */
     public Optional<Book> findFirstByName(String searchString){
         int index = 0;
-        boolean searching = true;
-
-        while (searching && index < bookList.size()){
+        while (index < bookList.size()){
             Book filename = bookList.get(index);
             if (filename.getTitle().contains(searchString)){
                 return Optional.of(filename);
@@ -94,8 +92,7 @@ public class Registry {
      */
     public Optional<Book> findByBarcode(int searchInt){
         int index = 0;
-        boolean searching = true;
-        while (searching && index < bookList.size()){
+        while (index < bookList.size()){
             Book filename = bookList.get(index);
             if (filename.getBarcode() == searchInt){
                 return Optional.of(filename);
@@ -114,8 +111,7 @@ public class Registry {
     public ArrayList<Book> findAllByAuthor(String searchAuthor){
         int index = 0;
         ArrayList<Book> tempBookList = new ArrayList<>();
-        boolean searching = true;
-        while (searching && index < bookList.size()){
+        while (index < bookList.size()){
             Book filename = bookList.get(index);
             if (filename.getAuthor().contains(searchAuthor)){
                 tempBookList.add(filename);
