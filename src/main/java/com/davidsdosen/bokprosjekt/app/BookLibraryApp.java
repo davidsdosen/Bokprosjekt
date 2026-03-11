@@ -50,7 +50,7 @@ public class BookLibraryApp {
 
     /**
      * 1st part of user interface application
-     * Method to show the menu in user interface
+     * Method to show the menu in a user interface
      * @return returns the menuChoice from user input after displaying the user input options
      */
     private int showMenu()
@@ -77,7 +77,7 @@ public class BookLibraryApp {
     /**
      * 2nd part of user interface application
      * This method runs after showMenu()
-     * using switch case to let user decide what to do
+     * using a switch case to let a user decide what to do
      */
     public void start(){
         boolean finished = false;
