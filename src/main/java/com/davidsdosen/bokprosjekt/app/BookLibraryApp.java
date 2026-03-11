@@ -1,6 +1,8 @@
 package com.davidsdosen.bokprosjekt.app;
 import com.davidsdosen.bokprosjekt.repository.Registry;
 import com.davidsdosen.bokprosjekt.model.Book;
+
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -120,37 +122,23 @@ public class BookLibraryApp {
                 case FIND_BOOK_BY_TITLE:
                     System.out.println("Enter a title");
                     String titleOfBook = this.stringChoice();
-                    if(this.register.findFirstByName(titleOfBook).isEmpty()){
-                        System.out.println("Error: This book does not exist");
-                    }
-                    else {
-                        System.out.println(this.register.findFirstByName(titleOfBook).toString());
-                    }
+                    Optional<Book> resultTitle = register.findFirstByName(titleOfBook);
+                    System.out.println(resultTitle.map(Book::toString).orElse("Book not found"));
                     break;
                 case FIND_BOOKS_BY_AUTHOR:
                     System.out.println("Find all books by author");
                     String stringChoice = this.stringChoice();
-                    if(this.register.findAllByAuthor(stringChoice) == null){
-                        System.out.println("Error: This book does not exist");
+                    List<Book> resultAuthor = register.findAllByAuthor(stringChoice);
+                    if (resultAuthor.isEmpty()) {
+                        System.out.println("Book not found");
+                    } else {
+                        resultAuthor.forEach(System.out::println);
                     }
-                    else {
-                        System.out.println(this.register.findAllByAuthor(stringChoice).toString());
-                    }
-                    break;
                 case FIND_BOOK_BY_BARCODE:
                     System.out.println("Enter the barcode");
                     int barcodeInt = this.intChoice();
-                    Optional<Book> result = register.findByBarcode(barcodeInt);
-                    System.out.println(result.map(Book::toString).orElse("Book not found"));
-
-                    /* Old method
-
-                    if(this.register.findByBarcode(barcodeInt).isEmpty()){
-                        System.out.println("Error: This book does not exist");
-                    }
-                    else {
-                        System.out.println(this.register.findByBarcode(barcodeInt).toString());
-                    }*/
+                    Optional<Book> resultBarcode = register.findByBarcode(barcodeInt);
+                    System.out.println(resultBarcode.map(Book::toString).orElse("Book not found"));
                     break;
                 case DELETE_BOOK:
                     System.out.println("Enter the barcode");
