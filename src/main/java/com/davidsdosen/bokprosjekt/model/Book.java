@@ -4,12 +4,7 @@ package com.davidsdosen.bokprosjekt.model;
  * com.davidsdosen.bokprosjekt.model.Book class
  * @author David
  * @version 0.0.1 (16 Nov, 2021)
- * @version 0.0.2 (10 Mar, 2026) refactoring changes:
- * - Added data type final to restrict modification to values that are not meant to be mutated
- * - Refactored lending status and added two lending methods that adds encapsulation of state transitions, basically
- *   prevents unauthorized change by doing setLent(true), instead needs to change through lend() and returnBook()
- *   methods that throw errors if something is wrong
- * -
+ * @version 0.0.2 (10 Mar, 2026) refactoring
  */
 
 
@@ -76,7 +71,7 @@ public class Book
 
     public void lend() {
         if (lent) {
-            throw new IllegalStateException("com.davidsdosen.bokprosjekt.model.Book is already lent");
+            throw new IllegalStateException("Book is already lent");
         }
         lent = true;
     }
