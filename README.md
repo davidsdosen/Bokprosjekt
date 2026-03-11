@@ -81,4 +81,28 @@ case FIND_BOOK_BY_BARCODE:
     break;
 ```
 
-### 5. BlaBla
+### 5. Using streams
+
+Demonstrated on the findFirstByName method
+
+Old:
+```java
+public Optional<Book> findFirstByName(String searchString){
+    int index = 0;
+    while (index < bookList.size()){
+        Book filename = bookList.get(index);
+        if (filename.getTitle().contains(searchString)){
+            return Optional.of(filename);
+        }
+        index++;
+    }
+    return Optional.empty();
+}
+```
+New:
+```java
+public Optional<Book> findFirstByName(String searchString){
+
+    return bookList.stream().filter(book -> book.getTitle().contains(searchString)).findFirst();
+}
+```

@@ -23,7 +23,7 @@ public class Registry {
     }
 
     /**
-     * Method that adds new book
+     * Method that adds a new book
      * @param book book with its respective fields
      */
     public void addBook(Book book){
@@ -71,24 +71,15 @@ public class Registry {
      * Method that finds first by title
      * @param searchString the title that comes from user input
      * @return returns the book
-     * Stage 3 Task 2
      */
     public Optional<Book> findFirstByName(String searchString){
-        int index = 0;
-        while (index < bookList.size()){
-            Book filename = bookList.get(index);
-            if (filename.getTitle().contains(searchString)){
-                return Optional.of(filename);
-            }
-            index++;
-        }
-        return Optional.empty();
+        return bookList.stream().filter(book -> book.getTitle().contains(searchString)).findFirst();
     }
 
     /**
-     * Method that finds book by barcode
+     * Method that finds a book by barcode
      * @param searchInt the barcode int variable that comes from user input
-     * @return returns book that was found by the specific barcode
+     * @return returns a book found by the specific barcode
      */
     public Optional<Book> findByBarcode(int searchInt){
         int index = 0;
@@ -122,7 +113,7 @@ public class Registry {
     }
 
     /**
-     * Method that deletes book by barcode
+     * Method that deletes a book by barcode
      * @param barcodeInt barcode entered by user input
      * @return deletes a book that matches the barcode input
      */
