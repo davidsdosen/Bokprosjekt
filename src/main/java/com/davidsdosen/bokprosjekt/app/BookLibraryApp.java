@@ -111,7 +111,7 @@ public class BookLibraryApp {
                     }
                     Book book = new Book(title, author, publisher, releaseYear, pages, barcode);
                     this.register.addBook(book);
-                    System.out.println("com.davidsdosen.bokprosjekt.model.Book added successfully.");
+                    System.out.println("Book added successfully.");
                     break;
                 case LIST_ALL_BOOKS:
                     System.out.println("Listed all books:");
@@ -141,7 +141,7 @@ public class BookLibraryApp {
                     System.out.println("Enter the barcode");
                     int barcodeInt = this.intChoice();
                     Optional<Book> result = register.findByBarcode(barcodeInt);
-                    System.out.println(result.map(Book::toString).orElse("com.davidsdosen.bokprosjekt.model.Book not found"));
+                    System.out.println(result.map(Book::toString).orElse("Book not found"));
 
                     /* Old method
 
@@ -156,9 +156,9 @@ public class BookLibraryApp {
                     System.out.println("Enter the barcode");
                     int barcodeIntForDeletion = this.intChoice();
                     if(register.deleteByBarcode(barcodeIntForDeletion)){
-                        System.out.println("com.davidsdosen.bokprosjekt.model.Book has been deleted correctly");
+                        System.out.println("Book has been deleted correctly");
                     }else {
-                        System.out.println("com.davidsdosen.bokprosjekt.model.Book does not exist");
+                        System.out.println("Book does not exist");
                     }
                         break;
                 case EXIT:
