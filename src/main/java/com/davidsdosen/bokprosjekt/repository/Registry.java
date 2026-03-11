@@ -43,7 +43,7 @@ public class Registry {
         this.addBook(new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201));
         this.addBook(new Book("Kokebok", "David", "NTNU Forlag",2016,150,123));
         this.addBook(new Book("Avoid being ganked on midlane", "Raul", "Mancave Publishing",2021,10,124));
-        this.addBook(new Book("David's com.davidsdosen.bokprosjekt.model.Book of Grudges", "David", "Mancave Publishing",2021,3,125));
+        this.addBook(new Book("David's Book of Grudges", "David", "Mancave Publishing",2021,3,125));
     }
 
     /**
