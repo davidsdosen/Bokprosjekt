@@ -124,7 +124,7 @@ public class Registry {
     /**
      * Method that deletes book by barcode
      * @param barcodeInt barcode entered by user input
-     * @return
+     * @return deletes a book that matches the barcode input
      */
     public boolean deleteByBarcode(int barcodeInt){
         for (Book book: bookList) {
