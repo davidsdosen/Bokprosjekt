@@ -1,15 +1,17 @@
+package com.davidsdosen.bokprosjekt.repository;
+import com.davidsdosen.bokprosjekt.model.Book;
 import java.util.ArrayList;
 import java.util.Optional;
 
 /**
- * Registry class
+ * com.davidsdosen.bokprosjekt.repository.Registry class
  * @author David
  * @version 0.0.1 (16 Nov, 2021)
  */
 public class Registry {
 
     /**
-     * field bookList that holds an ArrayList that holds the books (Book objects)
+     * field bookList that holds an ArrayList that holds the books (com.davidsdosen.bokprosjekt.model.Book objects)
      */
     ArrayList<Book> bookList;
 
@@ -41,7 +43,7 @@ public class Registry {
         this.addBook(new Book("Harry Potter", "J.K. Rowling", "Gyldendal", 1997, 600, 201));
         this.addBook(new Book("Kokebok", "David", "NTNU Forlag",2016,150,123));
         this.addBook(new Book("Avoid being ganked on midlane", "Raul", "Mancave Publishing",2021,10,124));
-        this.addBook(new Book("David's Book of Grudges", "David", "Mancave Publishing",2021,3,125));
+        this.addBook(new Book("David's com.davidsdosen.bokprosjekt.model.Book of Grudges", "David", "Mancave Publishing",2021,3,125));
     }
 
     /**

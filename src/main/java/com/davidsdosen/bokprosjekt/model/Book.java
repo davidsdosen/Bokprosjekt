@@ -1,5 +1,7 @@
+package com.davidsdosen.bokprosjekt.model;
+
 /**
- * Book class
+ * com.davidsdosen.bokprosjekt.model.Book class
  * @author David
  * @version 0.0.1 (16 Nov, 2021)
  * @version 0.0.2 (10 Mar, 2026) refactoring changes:
@@ -74,7 +76,7 @@ public class Book
 
     public void lend() {
         if (lent) {
-            throw new IllegalStateException("Book is already lent");
+            throw new IllegalStateException("com.davidsdosen.bokprosjekt.model.Book is already lent");
         }
         lent = true;
     }

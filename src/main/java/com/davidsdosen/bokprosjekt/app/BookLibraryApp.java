@@ -1,15 +1,19 @@
+package com.davidsdosen.bokprosjekt.app;
+import com.davidsdosen.bokprosjekt.repository.Registry;
+import com.davidsdosen.bokprosjekt.model.Book;
+import java.util.Optional;
 import java.util.Scanner;
 
 /**
- * BookLibraryApp class
+ * com.davidsdosen.bokprosjekt.app.BookLibraryApp class
  * @author David
  * @version 0.0.1 (16 Nov, 2021)
  */
 public class BookLibraryApp {
 
     /**
-     * non-initialized field that holds one register object of class Registry that again
-     * holds multiple book objects of class Book
+     * non-initialized field that holds one register object of class com.davidsdosen.bokprosjekt.repository.Registry that again
+     * holds multiple book objects of class com.davidsdosen.bokprosjekt.model.Book
      */
     Registry register;
 
@@ -107,7 +111,7 @@ public class BookLibraryApp {
                     }
                     Book book = new Book(title, author, publisher, releaseYear, pages, barcode);
                     this.register.addBook(book);
-                    System.out.println("Book added successfully.");
+                    System.out.println("com.davidsdosen.bokprosjekt.model.Book added successfully.");
                     break;
                 case LIST_ALL_BOOKS:
                     System.out.println("Listed all books:");
@@ -136,20 +140,25 @@ public class BookLibraryApp {
                 case FIND_BOOK_BY_BARCODE:
                     System.out.println("Enter the barcode");
                     int barcodeInt = this.intChoice();
+                    Optional<Book> result = register.findByBarcode(barcodeInt);
+                    System.out.println(result.map(Book::toString).orElse("com.davidsdosen.bokprosjekt.model.Book not found"));
+
+                    /* Old method
+
                     if(this.register.findByBarcode(barcodeInt).isEmpty()){
                         System.out.println("Error: This book does not exist");
                     }
                     else {
                         System.out.println(this.register.findByBarcode(barcodeInt).toString());
-                    }
+                    }*/
                     break;
                 case DELETE_BOOK:
                     System.out.println("Enter the barcode");
                     int barcodeIntForDeletion = this.intChoice();
                     if(register.deleteByBarcode(barcodeIntForDeletion)){
-                        System.out.println("Book has been deleted correctly");
+                        System.out.println("com.davidsdosen.bokprosjekt.model.Book has been deleted correctly");
                     }else {
-                        System.out.println("Book does not exist");
+                        System.out.println("com.davidsdosen.bokprosjekt.model.Book does not exist");
                     }
                         break;
                 case EXIT:
