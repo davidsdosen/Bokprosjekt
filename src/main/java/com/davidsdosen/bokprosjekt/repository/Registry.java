@@ -1,6 +1,7 @@
 package com.davidsdosen.bokprosjekt.repository;
 import com.davidsdosen.bokprosjekt.model.Book;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -15,13 +16,13 @@ public class Registry {
     /**
      * field bookList that holds an ArrayList that holds the books (Book objects)
      */
-    ArrayList<Book> bookList;
+    ArrayList<Book> books;
 
     /**
      * Method that initializes the field bookList
      */
     public Registry(){
-        bookList = new ArrayList<>();
+        books = new ArrayList<>();
     }
 
     /**
@@ -34,7 +35,50 @@ public class Registry {
             System.out.println("Error: empty value cannot be added as book");
         }
         else
-            this.bookList.add(book);
+            this.books.add(book);
+    }
+
+    /**
+     * Getter method that returns all books
+     */
+    public List<Book> getAllBooks(){
+        return books;
+    }
+
+    /**
+     * Method that finds first by title
+     * @param searchString the title that comes from user input
+     * @return returns the book
+     */
+    public Optional<Book> findFirstByName(String searchString){
+        return books.stream().filter(book -> book.getTitle().contains(searchString)).findFirst();
+    }
+
+    /**
+     * Method that finds a book by barcode
+     * @param searchInt the barcode int variable that comes from user input
+     * @return returns a book found by the specific barcode
+     */
+    public Optional<Book> findByBarcode(int searchInt){
+        return books.stream().filter(book -> book.getBarcode() == searchInt).findFirst();
+    }
+
+    /**
+     * Method that finds all books by author name
+     * @param searchAuthor author's name from user input
+     * @return returns an ArrayList of books
+     */
+    public ArrayList<Book> findAllByAuthor(String searchAuthor){
+        return books.stream().filter(book -> book.getAuthor().contains(searchAuthor)).collect(Collectors.toCollection(ArrayList::new));
+    }
+
+    /**
+     * Method that deletes a book by barcode
+     * @param barcodeInt barcode entered by user input
+     * @return returns true if a book was deleted, false if a book was not found
+     */
+    public boolean deleteByBarcode(int barcodeInt){
+        return books.removeIf(book -> book.getBarcode() == barcodeInt);
     }
 
     /**
@@ -45,61 +89,5 @@ public class Registry {
         this.addBook(new Book("Kokebok", "David", "NTNU Forlag",2016,150,123));
         this.addBook(new Book("Avoid being ganked on midlane", "Raul", "Mancave Publishing",2021,10,124));
         this.addBook(new Book("David's Book of Grudges", "David", "Mancave Publishing",2021,3,125));
-    }
-
-    /**
-     * Method that lists all books
-     */
-    public void listAllBooks() {
-        int index = 0;
-        while (index < bookList.size())
-        {
-            Book book = bookList.get(index);
-            System.out.println("----------------------");
-            System.out.println("Title :" + book.getTitle());
-            System.out.println("Author :" + book.getAuthor());
-            System.out.println("Publisher :" + book.getPublisher());
-            System.out.println("Release year :" + book.getReleaseYear());
-            System.out.println("Pages :" + book.getPages());
-            System.out.println("Barcode :" + book.getBarcode());
-            System.out.println("Currently lent :" + book.isLent());
-            index++;
-        }
-    }
-
-    /**
-     * Method that finds first by title
-     * @param searchString the title that comes from user input
-     * @return returns the book
-     */
-    public Optional<Book> findFirstByName(String searchString){
-        return bookList.stream().filter(book -> book.getTitle().contains(searchString)).findFirst();
-    }
-
-    /**
-     * Method that finds a book by barcode
-     * @param searchInt the barcode int variable that comes from user input
-     * @return returns a book found by the specific barcode
-     */
-    public Optional<Book> findByBarcode(int searchInt){
-        return bookList.stream().filter(book -> book.getBarcode() == searchInt).findFirst();
-    }
-
-    /**
-     * Method that finds all books by author name
-     * @param searchAuthor author's name from user input
-     * @return returns an ArrayList of books
-     */
-    public ArrayList<Book> findAllByAuthor(String searchAuthor){
-        return bookList.stream().filter(book -> book.getAuthor().contains(searchAuthor)).collect(Collectors.toCollection(ArrayList::new));
-    }
-
-    /**
-     * Method that deletes a book by barcode
-     * @param barcodeInt barcode entered by user input
-     * @return returns true if a book was deleted, false if a book was not found
-     */
-    public boolean deleteByBarcode(int barcodeInt){
-        return bookList.removeIf(book -> book.getBarcode() == barcodeInt);
     }
 }

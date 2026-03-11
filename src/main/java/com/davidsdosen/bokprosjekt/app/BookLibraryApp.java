@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class BookLibraryApp {
 
     /**
-     * non-initialized field that holds one register object of class com.davidsdosen.bokprosjekt.repository.Registry that again
-     * holds multiple book objects of class com.davidsdosen.bokprosjekt.model.Book
+     * non-initialized field that holds one register object of class Registry that again
+     * holds multiple book objects of class Book
      */
     Registry register;
 
@@ -116,8 +116,8 @@ public class BookLibraryApp {
                     System.out.println("Book added successfully.");
                     break;
                 case LIST_ALL_BOOKS:
-                    System.out.println("Listed all books:");
-                    this.register.listAllBooks();
+                    System.out.println("Listing all books:");
+                    register.getAllBooks().forEach(System.out::println);
                     break;
                 case FIND_BOOK_BY_TITLE:
                     System.out.println("Enter a title");
@@ -134,6 +134,7 @@ public class BookLibraryApp {
                     } else {
                         resultAuthor.forEach(System.out::println);
                     }
+                    break;
                 case FIND_BOOK_BY_BARCODE:
                     System.out.println("Enter the barcode");
                     int barcodeInt = this.intChoice();

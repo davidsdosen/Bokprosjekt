@@ -82,7 +82,72 @@ case FIND_BOOK_BY_BARCODE:
     break;
 ```
 
-## 5. Using streams and refactoring methods
+## 5. Refactoring books field
+This is a change to the way the bookList is stored in the registry.
+- private hides it from other classes
+- final is used to prevent accidental modification of the list
+- List is used instead of ArrayList which is an interface, standard practice in Java
+
+Old:
+
+```java
+ArrayList<Book> books;
+```
+New:
+```java
+private final List<Book> books;
+```
+
+## 6. Refactoring how all books are listed
+Changed the way all books are listed. The registry class is no longer responsible for listing all books, it only returns a list of books.
+The app class is responsible for listing all books, the classes now follow the single responsibility principle which is
+a core concept in OOP.
+
+#### Old:
+
+Registry class
+```java
+public void listAllBooks() {
+        int index = 0;
+        while (index < bookList.size())
+        {
+            Book book = bookList.get(index);
+            System.out.println("----------------------");
+            System.out.println("Title :" + book.getTitle());
+            System.out.println("Author :" + book.getAuthor());
+            System.out.println("Publisher :" + book.getPublisher());
+            System.out.println("Release year :" + book.getReleaseYear());
+            System.out.println("Pages :" + book.getPages());
+            System.out.println("Barcode :" + book.getBarcode());
+            System.out.println("Currently lent :" + book.isLent());
+            index++;
+        }
+    }
+```
+App class
+```java
+case LIST_ALL_BOOKS:
+                    System.out.println("Listed all books:");
+                    this.register.listAllBooks();
+                    break;
+```
+#### New:
+
+Registry class
+```java
+public List<Book> getAllBooks(){
+        return books;
+    }
+```
+App class
+```java
+case LIST_ALL_BOOKS:
+        System.out.println("Listing all books:");
+        register.getAllBooks().forEach(System.out::println);
+        break;   
+```
+
+## 7. Using streams and refactoring methods
 
 
 ### Iterating to find a book by name

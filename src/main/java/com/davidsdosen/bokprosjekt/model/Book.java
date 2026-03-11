@@ -84,7 +84,6 @@ public class Book
      * Reusing toString() method from java by using @Override to return for printing information about a book
      * @return returns the book with its details
      */
-
     @Override
     public String toString() {
         return "//////////////" + "\n" +
