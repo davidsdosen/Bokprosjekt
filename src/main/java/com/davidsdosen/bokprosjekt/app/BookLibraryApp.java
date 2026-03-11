@@ -22,7 +22,7 @@ public class BookLibraryApp {
     /**
      * psvm for starting up to run the user interface application
      */
-    public static void main(String[] args) {
+    static void main(String[] args) {
         BookLibraryApp bookLibraryApp = new BookLibraryApp();
         bookLibraryApp.init();
         bookLibraryApp.start();
